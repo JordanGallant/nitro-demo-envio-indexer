@@ -1,0 +1,11 @@
+type IDexRouter_SwapCompleted {
+  id: ID!
+  inputToken: String!
+  amountIn: BigInt!
+  outputToken: String!
+  amountOutMin: BigInt!
+  amountOut:BigInt!
+}
+
+
+

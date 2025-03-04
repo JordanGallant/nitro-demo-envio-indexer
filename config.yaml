@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=./node_modules/envio/evm.schema.json
+name: nadfun
+networks:
+- id: 10143
+  start_block: 0
+  contracts:
+  - name: IDexRouter
+    address:
+    - 0x82193139cCE644B32919d42ABf84A15D57B8aff6
+    handler: src/EventHandlers.ts
+    events:
+    - event: SwapCompleted (address indexed inputToken,uint256 amountIn,address indexed outputToken,uint256 amountOutMin,uint256 indexed amountOut)
+raw_events: true
