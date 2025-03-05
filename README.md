@@ -1,4 +1,4 @@
-# Niro Demo indexer
+# Nitro Demo indexer
 
 Welcome to the Envio Blank Template! This repository serves as a starting point for setting up an Envio indexer.
 
