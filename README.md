@@ -18,7 +18,7 @@ To start the indexer, follow these steps:
 
 1. Navigate to the project directory:
    ```sh
-   cd nad.fun-demo-envio-indexer
+   cd nitro-demo-envio-indexer
 2. Install dependencies
    ```sh
    pnpm install
