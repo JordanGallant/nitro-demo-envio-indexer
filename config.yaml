@@ -1,13 +1,76 @@
 # yaml-language-server: $schema=./node_modules/envio/evm.schema.json
-name: nadfun
+name: nitro
 networks:
 - id: 10143
   start_block: 0
   contracts:
-  - name: IDexRouter
+  - name: NitroAllocation
     address:
-    - 0x82193139cCE644B32919d42ABf84A15D57B8aff6
+    - 0x6Be402B06D4FE8CDE9B698a50853a66Ea260d009
     handler: src/EventHandlers.ts
     events:
-    - event: SwapCompleted (address indexed inputToken,uint256 amountIn,address indexed outputToken,uint256 amountOutMin,uint256 indexed amountOut)
-raw_events: true
+    - event: OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
+    - event: WhiteListed(address user, address pair, bool flag)
+  - name: NitroDebtManager
+    address:
+    - 0x91E667106b9F4cDd11BE9EDbdBf999400f2EfF01
+    handler: src/EventHandlers.ts
+    events:
+    - event: Approval(address indexed owner, address indexed account, uint256 indexed id)
+    - event: ApprovalForAll(address indexed owner, address indexed operator, bool isApproved)
+    - event: OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
+    - event: Paused(address account)
+    - event: Transfer(address indexed from, address indexed to, uint256 indexed id)
+    - event: Unpaused(address account)
+  - name: NitroFactory
+    address:
+    - 0xc218d4dd36C9d865a6Da0913b2aa517fa5629dC7
+    handler: src/EventHandlers.ts
+    events:
+    - event: DebtInteractionsAddressChange(address indexed debtInteractionImplemantetion, address indexed debtmanager)
+    - event: DistributionaAddressChange(address _Distribution)
+    - event: FeeRecipientSet(address oldRecipient, address newRecipient)
+    - event: NitroPairCreated(address indexed tokenX, address indexed tokenY, uint256 indexed binStep, address NitroPair, uint256 pid)
+    - event: NitroPairIgnoredStateChanged(address indexed NitroPair, bool ignored)
+    - event: NitroPairImplementationSet(address oldNitroPairImplementation, address NitroPairImplementation)
+    - event: OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+    - event: PresetRemoved(uint256 indexed binStep);
+    - event: PresetSet(uint256 indexed binStep, uint256 baseFactor, uint256 borrowFactor, uint256 protocolShare);
+    - event: QuoteAssetAdded(address indexed quoteAsset);
+    - event: QuoteAssetRemoved(address indexed quoteAsset);
+  - name: NitroPair
+    handler: src/EventHandlers.ts
+    events:
+    - event: ApprovalForAll(address indexed owner, address indexed operator, bool isApproved)
+    - event: BlackListed(uint256 indexed tokenId, address indexed pair, uint256[] id, uint256[] CollateralAmount)
+    - event: DepositedToBin(address indexed pair, address indexed sender, address indexed recipient, uint256[] id, uint256[] amountX, uint256[] amountY)
+    - event: ProtocolFeesCollected(address indexed sender, address indexed recipient, uint256 amountX, uint256 amountY)
+    - event: TransferBatch(address indexed operator, address indexed from, address indexed to, uint256[] ids, uint256[] amounts)
+    - event: TransferSingle(address indexed operator, address indexed from, address indexed to, uint256 id, uint256 amount)
+    - event: WithdrawnFromBin(address indexed pair, address indexed sender, address indexed recipient, uint256[] id, uint256[] amountX, uint256[] amountY)
+    - event: _Borrow(address indexed recipient, uint256 indexed tokenId, address indexed pair, bool _isXtoY, uint256[] id, uint256[] amountIn, uint256[] amountOut, uint256[] fees)
+      name: Borrow
+    - event: _Repay(address indexed recipient, uint256 indexed tokenId, address indexed pair, bool _isXtoY, uint256[] id, uint256[] amountIn, uint256[] amountOut, uint256[] fees)
+      name: Repay
+    - event: _RollOver(bool _isXtoY, uint256 indexed tokenId, uint256[] id, uint256[] amountIn)
+      name: RollOver
+    - event: _Swap(address indexed sender, address indexed recipient, uint256 indexed id, bool _isXtoY, uint256 amountIn, uint256 amountOut, uint256 fees)
+      name: Swap
+  - name: NitroPoint
+    address:
+    - 0x8f74182C65EA21114483a0fE35691c7e59AfA93f
+    handler: src/EventHandlers.ts
+    events:
+    - event: Approval(address indexed owner, address indexed spender, bool status)
+    - event: ApprovalForPair(address indexed owner, address indexed spender, uint256 amount)
+    - event: CommunityRewarderLogicChanged(address indexed rewarderLogic, bool indexed status)
+    - event: LiquidatorGracePeriodChanged(uint256 indexed newGracePeriod)
+    - event: LpLocked(address indexed pair, address indexed receiver, uint256[] indexed bin, uint256[] amount)
+    - event: LpUnLocked(address indexed pair, address indexed receiver, uint256[] indexed bin, uint256[] amount)
+    - event: NitroPointClaim(address indexed receiver, uint256 indexed amount)
+    - event: OracleChange(address indexed oracle)
+    - event: OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
+    - event: PairRewarderChanged(address indexed rewarder, address indexed pair, bool indexed status)
+    - event: PointBoosterChanged(address indexed pair, uint256 indexed newPointBooster)
+    - event: QuoteChange(address indexed quoter)
+    - event: RewarderChanged(address indexed rewarder, bool indexed status)

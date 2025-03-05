@@ -1,0 +1,547 @@
+{
+    "ContractName": "NitroFactory",
+    "address": "0xc218d4dd36C9d865a6Da0913b2aa517fa5629dC7",
+    "ABI": [
+        {
+            "type": "constructor",
+            "inputs": [{ "name": "feeRecipient", "type": "address", "internalType": "address" }],
+            "stateMutability": "nonpayable"
+        },
+        {
+            "type": "function",
+            "name": "KickStartLBB",
+            "inputs": [
+                { "name": "pair", "type": "address", "internalType": "contract INitroPairLBB" },
+                { "name": "endTime", "type": "uint128", "internalType": "uint128" },
+                { "name": "_initialPriceWeight", "type": "uint128", "internalType": "uint128" },
+                { "name": "_finalPriceWeight", "type": "uint128", "internalType": "uint128" },
+                { "name": "_limitPerUser", "type": "uint128", "internalType": "uint128" }
+            ],
+            "outputs": [],
+            "stateMutability": "nonpayable"
+        },
+        {
+            "type": "function",
+            "name": "SetDebtImplementations",
+            "inputs": [
+                { "name": "_debtInteractionImplemantetion", "type": "address", "internalType": "address" },
+                { "name": "_debtManager", "type": "address", "internalType": "address" }
+            ],
+            "outputs": [],
+            "stateMutability": "nonpayable"
+        },
+        {
+            "type": "function",
+            "name": "_allNitroPairs",
+            "inputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }],
+            "outputs": [{ "name": "", "type": "address", "internalType": "contract INitroPair" }],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "addQuoteAsset",
+            "inputs": [{ "name": "quoteAsset", "type": "address", "internalType": "address" }],
+            "outputs": [],
+            "stateMutability": "nonpayable"
+        },
+        {
+            "type": "function",
+            "name": "createNitroPair",
+            "inputs": [
+                { "name": "tokenX", "type": "address", "internalType": "address" },
+                { "name": "tokenY", "type": "address", "internalType": "address" },
+                { "name": "PairOwner", "type": "address", "internalType": "address" },
+                { "name": "activeId", "type": "uint24", "internalType": "uint24" },
+                { "name": "binStep", "type": "uint16", "internalType": "uint16" },
+                { "name": "ifTG", "type": "bool", "internalType": "bool" }
+            ],
+            "outputs": [{ "name": "pair", "type": "address", "internalType": "contract INitroPair" }],
+            "stateMutability": "nonpayable"
+        },
+        {
+            "type": "function",
+            "name": "getAllNitroBinSteps",
+            "inputs": [],
+            "outputs": [{ "name": "presetsBinStep", "type": "uint256[]", "internalType": "uint256[]" }],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "getAllNitroPairsAval",
+            "inputs": [
+                { "name": "tokenX", "type": "address", "internalType": "address" },
+                { "name": "tokenY", "type": "address", "internalType": "address" }
+            ],
+            "outputs": [
+                {
+                    "name": "NitroPairsAvailable",
+                    "type": "tuple[]",
+                    "internalType": "struct INitroFactory.NitroPairInformation[]",
+                    "components": [
+                        { "name": "binStep", "type": "uint16", "internalType": "uint16" },
+                        { "name": "NitroPair", "type": "address", "internalType": "contract INitroPair" },
+                        { "name": "ignoredForRouting", "type": "bool", "internalType": "bool" }
+                    ]
+                }
+            ],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "getBinStepPreset",
+            "inputs": [{ "name": "binStep", "type": "uint256", "internalType": "uint256" }],
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "tuple",
+                    "internalType": "struct INitroFactory.BinStepPreSet",
+                    "components": [
+                        { "name": "isOpen", "type": "bool", "internalType": "bool" },
+                        { "name": "NitroPoint", "type": "bool", "internalType": "bool" },
+                        { "name": "baseFactor", "type": "uint16", "internalType": "uint16" },
+                        { "name": "borrowFactor", "type": "uint16", "internalType": "uint16" },
+                        { "name": "consRange", "type": "uint24", "internalType": "uint24" },
+                        { "name": "protocolShare", "type": "uint256", "internalType": "uint256" }
+                    ]
+                }
+            ],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "getDebtInteractionImplementation",
+            "inputs": [],
+            "outputs": [{ "name": "", "type": "address", "internalType": "address" }],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "getDebtManager",
+            "inputs": [],
+            "outputs": [{ "name": "", "type": "address", "internalType": "address" }],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "getDistribution",
+            "inputs": [],
+            "outputs": [{ "name": "", "type": "address", "internalType": "address" }],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "getFeeRecipient",
+            "inputs": [],
+            "outputs": [{ "name": "", "type": "address", "internalType": "address" }],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "getMinBinStep",
+            "inputs": [],
+            "outputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }],
+            "stateMutability": "pure"
+        },
+        {
+            "type": "function",
+            "name": "getNitroPairImplementation",
+            "inputs": [],
+            "outputs": [{ "name": "", "type": "address", "internalType": "address" }],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "getNitroPairImplementationTG",
+            "inputs": [],
+            "outputs": [{ "name": "", "type": "address", "internalType": "address" }],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "getNitroPairInfor",
+            "inputs": [
+                { "name": "tokenA", "type": "address", "internalType": "address" },
+                { "name": "tokenB", "type": "address", "internalType": "address" },
+                { "name": "binStep", "type": "uint256", "internalType": "uint256" }
+            ],
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "tuple",
+                    "internalType": "struct INitroFactory.NitroPairInformation",
+                    "components": [
+                        { "name": "binStep", "type": "uint16", "internalType": "uint16" },
+                        { "name": "NitroPair", "type": "address", "internalType": "contract INitroPair" },
+                        { "name": "ignoredForRouting", "type": "bool", "internalType": "bool" }
+                    ]
+                }
+            ],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "getNitroPairLBBPairOwner",
+            "inputs": [{ "name": "pair", "type": "address", "internalType": "contract INitroPair" }],
+            "outputs": [{ "name": "pairOwner", "type": "address", "internalType": "address" }],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "getNumberOfNitroPairs",
+            "inputs": [],
+            "outputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "getNumberOfQuoteAssets",
+            "inputs": [],
+            "outputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "getOuoteAt",
+            "inputs": [{ "name": "index", "type": "uint256", "internalType": "uint256" }],
+            "outputs": [{ "name": "quote", "type": "address", "internalType": "address" }],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "getOwner",
+            "inputs": [],
+            "outputs": [{ "name": "", "type": "address", "internalType": "address" }],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "isQuoteAsset",
+            "inputs": [{ "name": "token", "type": "address", "internalType": "address" }],
+            "outputs": [{ "name": "isQuote", "type": "bool", "internalType": "bool" }],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "isValidPair",
+            "inputs": [{ "name": "pair", "type": "address", "internalType": "address" }],
+            "outputs": [{ "name": "valid", "type": "bool", "internalType": "bool" }],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "owner",
+            "inputs": [],
+            "outputs": [{ "name": "", "type": "address", "internalType": "address" }],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "removePreset",
+            "inputs": [{ "name": "binStep", "type": "uint16", "internalType": "uint16" }],
+            "outputs": [],
+            "stateMutability": "nonpayable"
+        },
+        {
+            "type": "function",
+            "name": "removeQuoteAsset",
+            "inputs": [{ "name": "quoteAsset", "type": "address", "internalType": "address" }],
+            "outputs": [],
+            "stateMutability": "nonpayable"
+        },
+        {
+            "type": "function",
+            "name": "renounceOwnership",
+            "inputs": [],
+            "outputs": [],
+            "stateMutability": "nonpayable"
+        },
+        {
+            "type": "function",
+            "name": "setDistribution",
+            "inputs": [{ "name": "_Distribution", "type": "address", "internalType": "address" }],
+            "outputs": [],
+            "stateMutability": "nonpayable"
+        },
+        {
+            "type": "function",
+            "name": "setFeeRecipient",
+            "inputs": [{ "name": "feeRecipient", "type": "address", "internalType": "address" }],
+            "outputs": [],
+            "stateMutability": "nonpayable"
+        },
+        {
+            "type": "function",
+            "name": "setNitroPairIgnored",
+            "inputs": [
+                { "name": "tokenX", "type": "address", "internalType": "address" },
+                { "name": "tokenY", "type": "address", "internalType": "address" },
+                { "name": "binStep", "type": "uint16", "internalType": "uint16" },
+                { "name": "ignored", "type": "bool", "internalType": "bool" }
+            ],
+            "outputs": [],
+            "stateMutability": "nonpayable"
+        },
+        {
+            "type": "function",
+            "name": "setNitroPairImplementation",
+            "inputs": [{ "name": "newNitroPairImpl", "type": "address", "internalType": "address" }],
+            "outputs": [],
+            "stateMutability": "nonpayable"
+        },
+        {
+            "type": "function",
+            "name": "setNitroPairImplementationLBB",
+            "inputs": [{ "name": "newNitroPairImpl", "type": "address", "internalType": "address" }],
+            "outputs": [],
+            "stateMutability": "nonpayable"
+        },
+        {
+            "type": "function",
+            "name": "setPreset",
+            "inputs": [
+                { "name": "binStep", "type": "uint16", "internalType": "uint16" },
+                { "name": "isOpen", "type": "bool", "internalType": "bool" },
+                { "name": "baseFactor", "type": "uint16", "internalType": "uint16" },
+                { "name": "borrowFactor", "type": "uint16", "internalType": "uint16" },
+                { "name": "consRange", "type": "uint24", "internalType": "uint24" },
+                { "name": "protocolShare", "type": "uint256", "internalType": "uint256" }
+            ],
+            "outputs": [],
+            "stateMutability": "nonpayable"
+        },
+        {
+            "type": "function",
+            "name": "setStaticParametersOnPair",
+            "inputs": [
+                { "name": "tokenX", "type": "address", "internalType": "address" },
+                { "name": "tokenY", "type": "address", "internalType": "address" },
+                { "name": "binStep", "type": "uint16", "internalType": "uint16" },
+                { "name": "NitroPoint", "type": "bool", "internalType": "bool" },
+                { "name": "baseFactor", "type": "uint16", "internalType": "uint16" },
+                { "name": "borrowFactor", "type": "uint16", "internalType": "uint16" },
+                { "name": "consRange", "type": "uint24", "internalType": "uint24" },
+                { "name": "protocolShare", "type": "uint256", "internalType": "uint256" }
+            ],
+            "outputs": [],
+            "stateMutability": "nonpayable"
+        },
+        {
+            "type": "function",
+            "name": "transferOwnership",
+            "inputs": [{ "name": "newOwner", "type": "address", "internalType": "address" }],
+            "outputs": [],
+            "stateMutability": "nonpayable"
+        },
+        {
+            "type": "event",
+            "name": "DebtInteractionsAddressChange",
+            "inputs": [
+                {
+                    "name": "debtInteractionImplemantetion",
+                    "type": "address",
+                    "indexed": true,
+                    "internalType": "address"
+                },
+                { "name": "debtmanager", "type": "address", "indexed": true, "internalType": "address" }
+            ],
+            "anonymous": false
+        },
+        {
+            "type": "event",
+            "name": "DistributionaAddressChange",
+            "inputs": [{ "name": "_Distribution", "type": "address", "indexed": false, "internalType": "address" }],
+            "anonymous": false
+        },
+        {
+            "type": "event",
+            "name": "FeeRecipientSet",
+            "inputs": [
+                { "name": "oldRecipient", "type": "address", "indexed": false, "internalType": "address" },
+                { "name": "newRecipient", "type": "address", "indexed": false, "internalType": "address" }
+            ],
+            "anonymous": false
+        },
+        {
+            "type": "event",
+            "name": "NitroPairCreated",
+            "inputs": [
+                { "name": "tokenX", "type": "address", "indexed": true, "internalType": "address" },
+                { "name": "tokenY", "type": "address", "indexed": true, "internalType": "address" },
+                { "name": "binStep", "type": "uint256", "indexed": true, "internalType": "uint256" },
+                { "name": "NitroPair", "type": "address", "indexed": false, "internalType": "contract INitroPair" },
+                { "name": "pid", "type": "uint256", "indexed": false, "internalType": "uint256" }
+            ],
+            "anonymous": false
+        },
+        {
+            "type": "event",
+            "name": "NitroPairIgnoredStateChanged",
+            "inputs": [
+                { "name": "NitroPair", "type": "address", "indexed": true, "internalType": "contract INitroPair" },
+                { "name": "ignored", "type": "bool", "indexed": false, "internalType": "bool" }
+            ],
+            "anonymous": false
+        },
+        {
+            "type": "event",
+            "name": "NitroPairImplementationSet",
+            "inputs": [
+                {
+                    "name": "oldNitroPairImplementation",
+                    "type": "address",
+                    "indexed": false,
+                    "internalType": "address"
+                },
+                {
+                    "name": "NitroPairImplementation",
+                    "type": "address",
+                    "indexed": false,
+                    "internalType": "address"
+                }
+            ],
+            "anonymous": false
+        },
+        {
+            "type": "event",
+            "name": "OwnershipTransferred",
+            "inputs": [
+                { "name": "previousOwner", "type": "address", "indexed": true, "internalType": "address" },
+                { "name": "newOwner", "type": "address", "indexed": true, "internalType": "address" }
+            ],
+            "anonymous": false
+        },
+        {
+            "type": "event",
+            "name": "PresetRemoved",
+            "inputs": [{ "name": "binStep", "type": "uint256", "indexed": true, "internalType": "uint256" }],
+            "anonymous": false
+        },
+        {
+            "type": "event",
+            "name": "PresetSet",
+            "inputs": [
+                { "name": "binStep", "type": "uint256", "indexed": true, "internalType": "uint256" },
+                { "name": "baseFactor", "type": "uint256", "indexed": false, "internalType": "uint256" },
+                { "name": "borrowFactor", "type": "uint256", "indexed": false, "internalType": "uint256" },
+                { "name": "protocolShare", "type": "uint256", "indexed": false, "internalType": "uint256" }
+            ],
+            "anonymous": false
+        },
+        {
+            "type": "event",
+            "name": "QuoteAssetAdded",
+            "inputs": [{ "name": "quoteAsset", "type": "address", "indexed": true, "internalType": "address" }],
+            "anonymous": false
+        },
+        {
+            "type": "event",
+            "name": "QuoteAssetRemoved",
+            "inputs": [{ "name": "quoteAsset", "type": "address", "indexed": true, "internalType": "address" }],
+            "anonymous": false
+        },
+        {
+            "type": "error",
+            "name": "BinHelper__BinStepOverflows",
+            "inputs": [{ "name": "bp", "type": "uint256", "internalType": "uint256" }]
+        },
+        { "type": "error", "name": "BinHelper__IdOverflows", "inputs": [] },
+        {
+            "type": "error",
+            "name": "Math128x128__PowerUnderflow",
+            "inputs": [
+                { "name": "x", "type": "uint256", "internalType": "uint256" },
+                { "name": "y", "type": "int256", "internalType": "int256" }
+            ]
+        },
+        { "type": "error", "name": "NitroFactory__AddressZero", "inputs": [] },
+        {
+            "type": "error",
+            "name": "NitroFactory__BinStepAlreadyInExistance",
+            "inputs": [{ "name": "binStep", "type": "uint16", "internalType": "uint16" }]
+        },
+        {
+            "type": "error",
+            "name": "NitroFactory__BinStepDoesNotExit",
+            "inputs": [{ "name": "binStep", "type": "uint16", "internalType": "uint16" }]
+        },
+        {
+            "type": "error",
+            "name": "NitroFactory__BinStepHasNoPreset",
+            "inputs": [{ "name": "binStep", "type": "uint256", "internalType": "uint256" }]
+        },
+        {
+            "type": "error",
+            "name": "NitroFactory__BinStepTooLow",
+            "inputs": [{ "name": "binStep", "type": "uint256", "internalType": "uint256" }]
+        },
+        { "type": "error", "name": "NitroFactory__EndTimeZero", "inputs": [] },
+        {
+            "type": "error",
+            "name": "NitroFactory__FunctionIsLockedForUsers",
+            "inputs": [
+                { "name": "user", "type": "address", "internalType": "address" },
+                { "name": "binStep", "type": "uint256", "internalType": "uint256" }
+            ]
+        },
+        {
+            "type": "error",
+            "name": "NitroFactory__IdenticalAddresses",
+            "inputs": [{ "name": "token", "type": "address", "internalType": "address" }]
+        },
+        { "type": "error", "name": "NitroFactory__ImplementationZeroAddress", "inputs": [] },
+        {
+            "type": "error",
+            "name": "NitroFactory__NitroPairAlreadyInExistance",
+            "inputs": [
+                { "name": "tokenX", "type": "address", "internalType": "address" },
+                { "name": "tokenY", "type": "address", "internalType": "address" },
+                { "name": "_binStep", "type": "uint256", "internalType": "uint256" }
+            ]
+        },
+        {
+            "type": "error",
+            "name": "NitroFactory__NitroPairDoesNotExist",
+            "inputs": [
+                { "name": "tokenX", "type": "address", "internalType": "address" },
+                { "name": "tokenY", "type": "address", "internalType": "address" },
+                { "name": "binStep", "type": "uint256", "internalType": "uint256" }
+            ]
+        },
+        { "type": "error", "name": "NitroFactory__NitroPairIgnoredIsAlreadyInTheSameState", "inputs": [] },
+        {
+            "type": "error",
+            "name": "NitroFactory__NitroPairNotCreated",
+            "inputs": [
+                { "name": "tokenX", "type": "address", "internalType": "address" },
+                { "name": "tokenY", "type": "address", "internalType": "address" },
+                { "name": "binStep", "type": "uint256", "internalType": "uint256" }
+            ]
+        },
+        {
+            "type": "error",
+            "name": "NitroFactory__NitroPairSafetyCheckFailed",
+            "inputs": [{ "name": "NitroPairImplementation", "type": "address", "internalType": "address" }]
+        },
+        { "type": "error", "name": "NitroFactory__OnlyLBBOwner", "inputs": [] },
+        {
+            "type": "error",
+            "name": "NitroFactory__QuoteAssetAlreadyWhitelisted",
+            "inputs": [{ "name": "quoteAsset", "type": "address", "internalType": "address" }]
+        },
+        {
+            "type": "error",
+            "name": "NitroFactory__QuoteAssetNotWhitelisted",
+            "inputs": [{ "name": "quoteAsset", "type": "address", "internalType": "address" }]
+        },
+        {
+            "type": "error",
+            "name": "NitroFactory__SameFeeRecipient",
+            "inputs": [{ "name": "feeRecipient", "type": "address", "internalType": "address" }]
+        },
+        {
+            "type": "error",
+            "name": "NitroFactory__SameImplementation",
+            "inputs": [{ "name": "NitroPairImplementation", "type": "address", "internalType": "address" }]
+        }
+    ]
+}

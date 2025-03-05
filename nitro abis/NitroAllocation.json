@@ -1,0 +1,562 @@
+{
+    "ContractName": "NitroAllocation",
+    "address": "0x6Be402B06D4FE8CDE9B698a50853a66Ea260d009",
+    "ABI": [
+      {
+        "type": "constructor",
+        "inputs": [
+          {
+            "name": "_factory",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "RedistributeExcess",
+        "inputs": [
+          {
+            "name": "_ids",
+            "type": "uint256[]",
+            "internalType": "uint256[]"
+          },
+          {
+            "name": "_distributionX",
+            "type": "uint256[]",
+            "internalType": "uint256[]"
+          },
+          {
+            "name": "_distributionY",
+            "type": "uint256[]",
+            "internalType": "uint256[]"
+          },
+          {
+            "name": "pair",
+            "type": "address",
+            "internalType": "contract INitroPair"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "excess",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "SetOwner",
+        "inputs": [
+          {
+            "name": "pair",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "Owner",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "WHITELIST_TYPEHASH",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "WhiteList",
+        "inputs": [
+          {
+            "name": "pair",
+            "type": "address",
+            "internalType": "contract INitroPair"
+          },
+          {
+            "name": "user",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "flag",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "WhiteListWithSig",
+        "inputs": [
+          {
+            "name": "pair",
+            "type": "address",
+            "internalType": "contract INitroPair"
+          },
+          {
+            "name": "user",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "flag",
+            "type": "bool",
+            "internalType": "bool"
+          },
+          {
+            "name": "signature",
+            "type": "bytes",
+            "internalType": "bytes"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "buyToken",
+        "inputs": [
+          {
+            "name": "tokenX",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "tokenY",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "binStep",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "amountIn",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "amountOutmin",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "reciever",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "amountOut",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "claim",
+        "inputs": [
+          {
+            "name": "pair",
+            "type": "address",
+            "internalType": "contract INitroPair"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "amount",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "factory",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "address",
+            "internalType": "contract INitroFactory"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "getPairAllocationInfo",
+        "inputs": [
+          {
+            "name": "pair",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "",
+            "type": "tuple",
+            "internalType": "struct INitroAllocation.PairParams",
+            "components": [
+              {
+                "name": "claimed",
+                "type": "bool",
+                "internalType": "bool"
+              },
+              {
+                "name": "UseWhitelist",
+                "type": "bool",
+                "internalType": "bool"
+              },
+              {
+                "name": "Owner",
+                "type": "address",
+                "internalType": "address"
+              },
+              {
+                "name": "initialPriceWeight",
+                "type": "uint128",
+                "internalType": "uint128"
+              },
+              {
+                "name": "finalPriceWeight",
+                "type": "uint128",
+                "internalType": "uint128"
+              },
+              {
+                "name": "_limitPerUser",
+                "type": "uint128",
+                "internalType": "uint128"
+              },
+              {
+                "name": "Endprice",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "_amountInTotal",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "_amountOutTotal",
+                "type": "uint256",
+                "internalType": "uint256"
+              }
+            ]
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "getPairUserAllocationInfo",
+        "inputs": [
+          {
+            "name": "pair",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "user",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "",
+            "type": "tuple",
+            "internalType": "struct INitroAllocation.UserParams",
+            "components": [
+              {
+                "name": "_amountIn",
+                "type": "uint256",
+                "internalType": "uint256"
+              },
+              {
+                "name": "_amountOut",
+                "type": "uint256",
+                "internalType": "uint256"
+              }
+            ]
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "isUsed",
+        "inputs": [
+          {
+            "name": "",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "owner",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "renounceOwnership",
+        "inputs": [],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "setPairInfo",
+        "inputs": [
+          {
+            "name": "_initialPriceWeight",
+            "type": "uint128",
+            "internalType": "uint128"
+          },
+          {
+            "name": "_finalPriceWeight",
+            "type": "uint128",
+            "internalType": "uint128"
+          },
+          {
+            "name": "_limitPerUser",
+            "type": "uint128",
+            "internalType": "uint128"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "setPairWhiteListFlag",
+        "inputs": [
+          {
+            "name": "pair",
+            "type": "address",
+            "internalType": "contract INitroPair"
+          },
+          {
+            "name": "flag",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "transferOwnership",
+        "inputs": [
+          {
+            "name": "newOwner",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "updateEndPrice",
+        "inputs": [
+          {
+            "name": "pair",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "_Endprice",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "userPairWhiteList",
+        "inputs": [
+          {
+            "name": "",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "",
+            "type": "address",
+            "internalType": "address"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ],
+        "stateMutability": "view"
+      },
+      {
+        "type": "event",
+        "name": "OwnershipTransferred",
+        "inputs": [
+          {
+            "name": "previousOwner",
+            "type": "address",
+            "indexed": true,
+            "internalType": "address"
+          },
+          {
+            "name": "newOwner",
+            "type": "address",
+            "indexed": true,
+            "internalType": "address"
+          }
+        ],
+        "anonymous": false
+      },
+      {
+        "type": "event",
+        "name": "WhiteListed",
+        "inputs": [
+          {
+            "name": "user",
+            "type": "address",
+            "indexed": false,
+            "internalType": "address"
+          },
+          {
+            "name": "pair",
+            "type": "address",
+            "indexed": false,
+            "internalType": "address"
+          },
+          {
+            "name": "flag",
+            "type": "bool",
+            "indexed": false,
+            "internalType": "bool"
+          }
+        ],
+        "anonymous": false
+      },
+      {
+        "type": "error",
+        "name": "AlreadyClaimed",
+        "inputs": []
+      },
+      {
+        "type": "error",
+        "name": "InsufficientAmountOut",
+        "inputs": []
+      },
+      {
+        "type": "error",
+        "name": "NitroAllocation__InvalidPriceWeight",
+        "inputs": []
+      },
+      {
+        "type": "error",
+        "name": "NitroErrors__ONLYFACTORY",
+        "inputs": []
+      },
+      {
+        "type": "error",
+        "name": "NotEnded",
+        "inputs": []
+      },
+      {
+        "type": "error",
+        "name": "OnlyOwner",
+        "inputs": []
+      },
+      {
+        "type": "error",
+        "name": "OnlyValidPair",
+        "inputs": []
+      },
+      {
+        "type": "error",
+        "name": "PairStillRequiresWhiteList",
+        "inputs": [
+          {
+            "name": "pair",
+            "type": "address",
+            "internalType": "address"
+          }
+        ]
+      },
+      {
+        "type": "error",
+        "name": "Uint256x256Math__MulDivOverflow",
+        "inputs": []
+      },
+      {
+        "type": "error",
+        "name": "Unauthorized",
+        "inputs": []
+      },
+      {
+        "type": "error",
+        "name": "WalletLimitExceeded",
+        "inputs": [
+          {
+            "name": "usersPurchases",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "Limit",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ]
+      }
+    ]
+  }

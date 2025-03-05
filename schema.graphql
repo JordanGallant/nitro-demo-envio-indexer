@@ -1,11 +1,236 @@
-type IDexRouter_SwapCompleted {
+type NitroAllocation_OwnershipTransferred {
   id: ID!
-  inputToken: String!
-  amountIn: BigInt!
-  outputToken: String!
-  amountOutMin: BigInt!
-  amountOut:BigInt!
+  previousOwner: String!
+  newOwner: String!
+}
+
+type NitroFactory_NitroPairCreated{
+  id:ID!
+  tokenX: String!
+  tokenY: String!
+  binStep:BigInt!
+  nitroPair: String!
+  pid: BigInt!
+}
+
+type NitroFactory_DebtInteractionsAddressChange {
+  id: ID!
+  debtInteractionImplementation: String!
+  debtManager: String!
 }
 
 
+type NitroFactory_FeeRecipientSet {
+  id: ID!
+  oldRecipient: String!
+  newRecipient: String!
+}
+
+type NitroFactory_NitroPairIgnoredStateChanged {
+  id: ID!
+  nitroPair: String!
+  ignored: Boolean!
+}
+
+type NitroFactory_NitroPairImplementationSet {
+  id: ID!
+  oldNitroPairImplementation: String!
+  nitroPairImplementation: String!
+}
+
+type NitroFactory_OwnershipTransferred {
+  id: ID!
+  previousOwner: String!
+  newOwner: String!
+}
+
+type NitroFactory_PresetRemoved {
+  id: ID!
+  binStep: BigInt!
+}
+
+type NitroFactory_PresetSet {
+  id: ID!
+  binStep: BigInt!
+  baseFactor: BigInt!
+  borrowFactor: BigInt!
+  protocolShare: BigInt!
+}
+
+type NitroFactory_QuoteAssetAdded {
+  id: ID!
+  quoteAsset: String!
+}
+
+type NitroFactory_QuoteAssetRemoved {
+  id: ID!
+  quoteAsset: String!
+}
+
+type NitroPair_ApprovalForAll {
+  id: ID!
+  owner: String!
+  operator: String!
+  isApproved: Boolean!
+}
+
+type NitroPair_BlackListed {
+  id: ID!
+  tokenId: BigInt!
+  pair: String!
+  ids: [BigInt!]!
+  collateralAmounts: [BigInt!]!
+}
+
+type NitroPair_DepositedToBin {
+  id: ID!
+  pair: String!
+  sender: String!
+  recipient: String!
+  ids: [BigInt!]!
+  amountX: [BigInt!]!
+  amountY: [BigInt!]!
+}
+
+type NitroPair_ProtocolFeesCollected {
+  id: ID!
+  sender: String!
+  recipient: String!
+  amountX: BigInt!
+  amountY: BigInt!
+}
+
+type NitroPair_TransferBatch {
+  id: ID!
+  operator: String!
+  from: String!
+  to: String!
+  ids: [BigInt!]!
+  amounts: [BigInt!]!
+}
+
+type NitroPair_TransferSingle {
+  id: ID!
+  operator: String!
+  from: String!
+  to: String!
+  id_: BigInt!
+  amount: BigInt!
+}
+
+type NitroPair_WithdrawnFromBin {
+  id: ID!
+  pair: String!
+  sender: String!
+  recipient: String!
+  ids: [BigInt!]!
+  amountX: [BigInt!]!
+  amountY: [BigInt!]!
+}
+
+type NitroPair_Borrow {
+  id: ID!
+  recipient: String!
+  tokenId: BigInt!
+  pair: String!
+  isXtoY: Boolean!
+  ids: [BigInt!]!
+  amountIn: [BigInt!]!
+  amountOut: [BigInt!]!
+  fees: [BigInt!]!
+}
+
+type NitroPair_Repay {
+  id: ID!
+  recipient: String!
+  tokenId: BigInt!
+  pair: String!
+  isXtoY: Boolean!
+  ids: [BigInt!]!
+  amountIn: [BigInt!]!
+  amountOut: [BigInt!]!
+  fees: [BigInt!]!
+}
+
+type NitroPair_RollOver {
+  id: ID!
+  isXtoY: Boolean!
+  tokenId: BigInt!
+  ids: [BigInt!]!
+  amountIn: [BigInt!]!
+}
+
+type NitroPair_Swap {
+  id: ID!
+  sender: String!
+  recipient: String!
+  id_: BigInt!
+  isXtoY: Boolean!
+  amountIn: BigInt!
+  amountOut: BigInt!
+  fees: BigInt!
+}
+
+type NitroDebtManager_Approval {
+  id: ID!
+  owner: String!
+  account: String!
+  tokenId: BigInt!
+}
+
+type NitroDebtManager_ApprovalForAll {
+  id: ID!
+  owner: String!
+  operator: String!
+  isApproved: Boolean!
+}
+
+type NitroDebtManager_OwnershipTransferred {
+  id: ID!
+  previousOwner: String!
+  newOwner: String!
+}
+
+type NitroDebtManager_Paused {
+  id: ID!
+  account: String!
+}
+
+type NitroDebtManager_Transfer {
+  id: ID!
+  from: String!
+  to: String!
+  tokenId: BigInt!
+}
+
+type NitroDebtManager_Unpaused {
+  id: ID!
+  account: String!
+}
+
+type NitroPoint_Approval {
+  id: ID!
+  owner: String!
+  spender: String!
+  status: Boolean!
+}
+
+type NitroPoint_ApprovalForPair {
+  id: ID!
+  owner: String!
+  spender: String!
+  amount: BigInt!
+}
+
+type NitroPoint_CommunityRewarderLogicChanged {
+  id: ID!
+  rewarderLogic: String!
+  status: Boolean!
+}
+
+type NitroPoint_NitroPointClaim {
+  id: ID!
+  receiver: String!
+  amount: BigInt!
+}
 
