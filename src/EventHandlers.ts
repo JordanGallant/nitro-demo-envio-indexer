@@ -43,9 +43,47 @@ import {
 
 } from "generated";
 
+
+const createOrUpdateGlobalStats = async (fields: any, context: any) => {
+  let globalStats = await context.GlobalStats.get("global");
+
+  if (globalStats) {
+    // Update only the fields that exist in the event object
+    for (const key in fields) {
+      if (fields[key] !== undefined && key in globalStats) {
+        globalStats[key] = fields[key];
+      }
+    }
+  } else {
+    globalStats = {
+      id: "global",
+      nitroPointOwner: "deployer",
+      nitroPointOracle: "oracle",
+      nitroFactoryOwner: "deployer",
+      nitroAllocationOwner: "deployer",
+      nitroDebtManagerOwner: "deployer",
+    };
+  }
+
+  await context.GlobalStats.set(globalStats);
+
+};
+
+const createUser = async (address: string, context: any) => {
+  let user = await context.User.get(address)
+
+  if (!user) {
+     user = {
+       id: address,
+       address: address,      
+     }
+     context.User.set(user);
+  } 
+} 
+
+
  NitroFactory.NitroPairCreated.contractRegister(
    async ({ event, context }) => {
-     console.log("Nitro Pair Created", event.params.NitroPair);  
      context.addNitroPair(event.params.NitroPair);
    },
    { preRegisterDynamicContracts: true }
@@ -116,6 +154,8 @@ NitroFactory.OwnershipTransferred.handler(async ({ event, context }) => {
   };
 
   context.NitroFactory_OwnershipTransferred.set(entity);
+
+  await createOrUpdateGlobalStats({ nitroFactoryOwner: event.params.newOwner }, context);
 });
 
 NitroFactory.PresetRemoved.handler(async ({ event, context }) => {
@@ -168,6 +208,12 @@ NitroAllocation.OwnershipTransferred.handler(async ({ event, context }) => {
   };
 
   context.NitroAllocation_OwnershipTransferred.set(entity);
+
+  await createOrUpdateGlobalStats({ nitroAllocationOwner: event.params.newOwner }, context);
+});
+
+NitroAllocation.WhiteListed.handler(async ({ event, context }) => {
+  await createUser(event.params.user, context);
 });
 
 // NITROPAIR
@@ -354,6 +400,8 @@ NitroDebtManager.OwnershipTransferred.handler(async ({ event, context }) => {
   };
 
   context.NitroDebtManager_OwnershipTransferred.set(entity);
+
+  await createOrUpdateGlobalStats({ nitroDebtManagerOwner: event.params.newOwner }, context);
 });
 
 NitroDebtManager.Paused.handler(async ({ event, context }) => {
@@ -419,6 +467,7 @@ NitroPoint.CommunityRewarderLogicChanged.handler(async ({ event, context }) => {
   context.NitroPoint_CommunityRewarderLogicChanged.set(entity);
 });
 
+
 NitroPoint.NitroPointClaim.handler(async ({ event, context }) => {
   const entity: NitroPoint_NitroPointClaim = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
@@ -427,5 +476,9 @@ NitroPoint.NitroPointClaim.handler(async ({ event, context }) => {
   };
 
   context.NitroPoint_NitroPointClaim.set(entity);
+});
+
+NitroPoint.OracleChange.handler(async ({ event, context }) => {
+  await createOrUpdateGlobalStats({ nitroPointOracle: event.params.oracle }, context);
 });
 

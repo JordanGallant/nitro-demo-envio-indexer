@@ -1,27 +1,66 @@
-# Nitro Demo indexer
+# Nitro Envio indexer
 
-Welcome to the Envio Blank Template! This repository serves as a starting point for setting up an Envio indexer.
+*Please refer to the [documentation website](https://docs.envio.dev) for a thorough guide on all [Envio](https://envio.dev) indexer features*
 
-For a comprehensive guide on Envio indexer features, please refer to the [Envio Documentation](https://docs.envio.dev).
+## Run
 
-## Prerequisites
+```bash
+pnpm envio dev
+```
 
-Before you begin, ensure you have the following installed:
+## Pre-requisites
 
-- **Node.js** (v18 or newer)
-- **pnpm** (v8 or newer)
-- **Docker Desktop**
+- [Node.js (use v18 or newer)](https://nodejs.org/en/download/current)
+- [pnpm (use v8 or newer)](https://pnpm.io/installation)
+- [Docker desktop](https://www.docker.com/products/docker-desktop/)
 
-## Getting Started
+## Example queries
 
-To start the indexer, follow these steps:
+Visit http://localhost:8080 to see the GraphQL Playground, local password is `testing`.
 
-1. Navigate to the project directory:
-   ```sh
-   cd nitro-demo-envio-indexer
-2. Install dependencies
-   ```sh
-   pnpm install
-3. Start the indexer
-   ```sh
-   pnpm envio dev
+### Swaps
+
+```graphql
+query MyQuery {
+   NitroPair_Swap {
+    amountIn
+    amountOut
+    id
+    fees
+    isXtoY
+    recipient
+    sender
+  }
+}
+```
+
+### Swaps for specific recipient
+
+```graphql
+query MyQuery {
+  NitroPair_Swap(where: {recipient: {_eq: "0x71D6aCbAb3637B5Ea23C266aCBC3DD4341F93DD2"}}) {
+    amountIn
+    amountOut
+    id
+    fees
+    isXtoY
+    recipient
+    sender
+  }
+}
+```
+
+### Global stats
+
+```graphql
+query MyQuery {
+  GlobalStats(where: {id: {_eq: "global"}}) {
+    id
+    nitroAllocationOwner
+    nitroDebtManagerOwner
+    nitroFactoryOwner
+    nitroPointOracle
+    nitroPointOwner
+  }
+}
+```

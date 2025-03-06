@@ -1,3 +1,18 @@
+type GlobalStats {
+  id: ID! # singleton - 'global'
+  nitroPointOwner: String!
+  nitroPointOracle: String!
+  nitroFactoryOwner: String!
+  nitroAllocationOwner: String!
+  nitroDebtManagerOwner: String!
+}
+
+type User {
+  id: ID! # address
+  address: String!
+  swaps: [NitroPair_Swap!]! @derivedFrom(field: "sender")
+}
+
 type NitroAllocation_OwnershipTransferred {
   id: ID!
   previousOwner: String!
