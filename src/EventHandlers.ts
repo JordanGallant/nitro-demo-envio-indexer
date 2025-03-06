@@ -482,3 +482,4 @@ NitroPoint.OracleChange.handler(async ({ event, context }) => {
   await createOrUpdateGlobalStats({ nitroPointOracle: event.params.oracle }, context);
 });
 
+//nitro
